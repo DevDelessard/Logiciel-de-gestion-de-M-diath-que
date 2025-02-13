@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Bienvenue dans la médiathèque</h1>
+<p>Utilisez le menu pour naviguer.</p>
+
+<h2>Liste des médias disponibles</h2>
+<ul>
+    {% for media in medias %}
+        <li><strong>{{ media.titre }}</strong> - 
+            {% if media.type == "livre" %} Auteur : {{ media.auteur }}
+            {% elif media.type == "dvd" %} Réalisateur : {{ media.realisateur }}
+            {% elif media.type == "cd" %} Artiste : {{ media.artiste }}
+            {% elif media.type == "jeu" %} Jeu de plateau
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>Aucun média disponible.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

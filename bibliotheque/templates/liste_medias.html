@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Liste des Médias{% endblock %}
+
+{% block content %}
+<h2>Liste des Médias</h2>
+
+<table border="1">
+    <tr>
+        <th>Titre</th>
+        <th>Type</th>
+        <th>Quantité disponible</th>
+    </tr>
+    {% for media in medias %}
+    <tr>
+        <td>{{ media.titre }}</td>
+        <td>{{ media.get_type_display }}</td>
+        <td id="quantite-{{ media.id }}">{{ media.quantite_disponible }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">Aucun média disponible.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<script>
+function updateQuantities() {
+    fetch("/bibliotheque/get_medias_disponibles/")
+        .then(response => response.json())
+        .then(data => {
+            data.medias.forEach(media => {
+                let cell = document.getElementById("quantite-" + media.id);
+                if (cell) {
+                    cell.textContent = media.quantite_disponible;
+                }
+            });
+        });
+}
+
+// Rafraîchir les quantités toutes les 5 secondes
+setInterval(updateQuantities, 5000);
+</script>
+
+<a href="{% url 'accueil' %}">Retour</a>
+{% endblock %}

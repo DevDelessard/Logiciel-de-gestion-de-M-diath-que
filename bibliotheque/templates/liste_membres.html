@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Liste des Membres</h2>
+    <ul>
+        {% for membre in membres %}
+            <li>{{ membre.nom }} - {{ membre.email }}
+                <a href="{% url 'mettre_a_jour_membre' membre.id %}">Modifier</a>
+                {% if membre.a_emprunts_en_retard %} 🚫 {% endif %}
+                <a href="{% url 'emprunts_membre' membre.id %}">Voir emprunts</a>
+            </li>
+        {% empty %}
+            <li>Aucun membre enregistré.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'creer_membre' %}">Ajouter un membre</a>
+{% endblock %}

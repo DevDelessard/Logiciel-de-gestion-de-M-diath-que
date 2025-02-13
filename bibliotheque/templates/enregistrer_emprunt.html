@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Nouvel emprunt pour {{ membre.nom }}</h2>
+
+{% if medias %}
+<form method="post">
+    {% csrf_token %}
+
+    <label for="id_media_type">Type de média :</label>
+    <select id="id_media_type" name="media_type">
+        <option value="">Sélectionnez un type</option>
+        <option value="livre">Livre</option>
+        <option value="dvd">DVD</option>
+        <option value="cd">CD</option>
+    </select>
+
+    <label for="id_media">Média :</label>
+    <select id="id_media" name="media">
+        <option value="">Sélectionnez un média</option>
+    </select>
+
+    <label for="id_date_emprunt">Date d'emprunt :</label>
+    <input type="date" id="id_date_emprunt" name="date_emprunt" value="{{ form.date_emprunt.value }}">
+
+    <button type="submit">Enregistrer</button>
+</form>
+{% else %}
+<p>🚫 Aucun média disponible en stock.</p>
+{% endif %}
+
+<a href="{% url 'liste_membres' %}">Retour</a>
+
+<script>
+document.getElementById("id_media_type").addEventListener("change", function() {
+    var mediaType = this.value;
+    var mediaSelect = document.getElementById("id_media");
+
+    // Vider la liste actuelle
+    mediaSelect.innerHTML = '<option value="">Sélectionnez un média</option>';
+
+    if (mediaType) {
+        fetch(`/bibliotheque/get_medias_disponibles/?media_type=` + mediaType)
+            .then(response => response.json())
+            .then(data => {
+                data.medias.forEach(media => {
+                    var option = document.createElement("option");
+                    option.value = media.id;
+                    option.textContent = media.titre;
+                    mediaSelect.appendChild(option);
+                });
+            });
+    }
+});
+</script>
+
+{% endblock %}

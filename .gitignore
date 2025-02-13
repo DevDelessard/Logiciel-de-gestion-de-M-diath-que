@@ -1,0 +1,12 @@
+# Fichiers de l'environnement virtuel
+venv/
+__pycache__/
+
+# Base de données SQLite (si utilisée)
+db.sqlite3
+
+# Clés secrètes Django
+.env
+
+# Fichiers temporaires
+*.log

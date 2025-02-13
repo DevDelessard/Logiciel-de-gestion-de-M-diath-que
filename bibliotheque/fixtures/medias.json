@@ -1,0 +1,114 @@
+[
+{
+    "model": "bibliotheque.media",
+    "pk": 1,
+    "fields": {
+        "titre": "Le Seigneur des Anneaux",
+        "type": "livre",
+        "disponible": true,
+        "empruntable": true,
+        "quantite_disponible": 1,
+        "auteur": "J.R.R. Tolkien",
+        "realisateur": null,
+        "artiste": null
+    }
+},
+{
+    "model": "bibliotheque.media",
+    "pk": 2,
+    "fields": {
+        "titre": "Inception",
+        "type": "dvd",
+        "disponible": true,
+        "empruntable": true,
+        "quantite_disponible": 2,
+        "auteur": null,
+        "realisateur": "Christopher Nolan",
+        "artiste": null
+    }
+},
+{
+    "model": "bibliotheque.media",
+    "pk": 3,
+    "fields": {
+        "titre": "Thriller",
+        "type": "cd",
+        "disponible": true,
+        "empruntable": true,
+        "quantite_disponible": 4,
+        "auteur": null,
+        "realisateur": null,
+        "artiste": "Michael Jackson"
+    }
+},
+{
+    "model": "bibliotheque.media",
+    "pk": 4,
+    "fields": {
+        "titre": "Harry Potter à l'école des sorciers",
+        "type": "livre",
+        "disponible": true,
+        "empruntable": true,
+        "quantite_disponible": 6,
+        "auteur": "J.K. Rowling",
+        "realisateur": null,
+        "artiste": null
+    }
+},
+{
+    "model": "bibliotheque.media",
+    "pk": 5,
+    "fields": {
+        "titre": "The Dark Knight",
+        "type": "dvd",
+        "disponible": true,
+        "empruntable": true,
+        "quantite_disponible": 2,
+        "auteur": null,
+        "realisateur": "Christopher Nolan",
+        "artiste": null
+    }
+},
+{
+    "model": "bibliotheque.media",
+    "pk": 6,
+    "fields": {
+        "titre": "Back in Black",
+        "type": "cd",
+        "disponible": true,
+        "empruntable": true,
+        "quantite_disponible": 3,
+        "auteur": null,
+        "realisateur": null,
+        "artiste": "AC/DC"
+    }
+},
+{
+    "model": "bibliotheque.media",
+    "pk": 7,
+    "fields": {
+        "titre": "Les Aventuriers du Rail",
+        "type": "jeu",
+        "disponible": true,
+        "empruntable": true,
+        "quantite_disponible": 10,
+        "auteur": "Alan R. Moon",
+        "realisateur": null,
+        "artiste": null
+    }
+},
+{
+    "model": "bibliotheque.media",
+    "pk": 8,
+    "fields": {
+        "titre": "Catan",
+        "type": "jeu",
+        "disponible": true,
+        "empruntable": true,
+        "quantite_disponible": 8,
+        "auteur": "Klaus Teuber",
+        "realisateur": null,
+        "artiste": null
+    }
+}
+]

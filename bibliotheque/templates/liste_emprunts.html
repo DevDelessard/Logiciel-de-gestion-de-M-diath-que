@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Liste des Emprunts{% endblock %}
+
+{% block content %}
+<h2>Liste des Emprunts de {{ membre.nom }}</h2>
+{% if membre.est_bloque %}
+    <span style="color: gray; cursor: not-allowed;" title="Emprunts en retard !">🚫 Nouvel emprunt (bloqué)</span>
+{% else %}
+    {% if medias_disponibles %}
+        <a href="{% url 'enregistrer_emprunt' membre.id %}">➕ Nouvel emprunt</a>
+    {% else %}
+        <span style="color: gray; cursor: not-allowed;" title="Aucun média disponible">🚫 Aucun média en stock</span>
+    {% endif %}
+{% endif %}
+
+<ul>
+    {% for emprunt in emprunts %}
+    <li>
+        <strong>{{ emprunt.media.titre }}</strong> ({{ emprunt.media.get_type_display }}) - Emprunté le {{ emprunt.date_emprunt }}
+        {% if emprunt.en_retard %} 
+            <span style="color: red; font-weight: bold;"> ⚠ En retard !</span> 
+        {% endif %}
+        <a href="{% url 'rendre_emprunt' emprunt.id %}" onclick="return confirm('Confirmer la restitution ?');">🗑️ Rendre</a>
+    </li>
+{% empty %}
+    <li>Aucun emprunt en cours.</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'liste_membres' %}">Retour à la liste des membres</a>
+{% endblock %}
